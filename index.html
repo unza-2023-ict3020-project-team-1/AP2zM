@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+		<!-- head tag -->
+<head>
+	<!-- application title-->
+    <title>AP2zM</title>
+
+</head>
+	<!-- body tag -->
+<body>
+	<!-- API endpoint fatch herder 1 title-->
+    <h1>API endpoint</h1
+    
+<!-- This form allows users to upload PDF and metadata files using image buttons -->
+    <form id="pdfForm" onsubmit="fetchPDF(); return false;">
+    	
+    	<!-- Label for metadata file input -->
+        <label for="apiURL"> Enter API :</label>
+<!-- This input field allows users to enter the API URL, and it is required. -->
+        <input type="text" id="apiURL" placeholder="Enter API URL" required> 
+<br>
+        	<br> <br>
+        	<!-- This image input acts as a a button with specific dimensions and a border -->
+       <input type = image name =img1 src= "/html document/API1.png" alt= image button
+height='50' width='80' border=2>	<br>
+	<!-- this input elemet represents  a submit button for a form-->
+  <span>Submit</span>
+        
+    </form>
+	<!--   PDF upload header 1 tag title -->
+<h1> PDF Upload </h1>
+  <!-- This <div> element will be used to display PDF content or elements related to PDFs. -->
+<div id="pdfContainer"></div>
+    
+
+<br> <br>
+	    <!-- This form allows users to upload files and will be submitted to "upload.php" -->
+    <form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
+    <!-- Label for selecting and uploading metadata files -->
+   <label for="metadata-file">Upload Metadata</label><br>
+   	<!-- This input allows users to select and upload metadata files -->
+        <input type="file" id="metadata-file" name="metadata-file" style="display: none;">
+        	
+        <!-- This image input acts as a a button with specific dimensions and a border -->
+        <input type="image" src="/html document/metadata.png" alt="Submit Metadata" onclick="document.getElementById('metadata-file').click(); return false;"   height='50' width='80' border=2 > <br><br>
+
+       <label for="pdf-file"><b>Upload PDF<b></label> <br>
+
+     <input type="image" src="/html document/pdf.png" alt="Submit PDF" onclick="document.getElementById('pdf-file').click(); return false;"  height='50' width='80' border=2>
+     <!-- This input allows users to select and upload PDF files -->
+        <input type="file" id="pdf-file" name="pdf-file" >
+
+<br><b>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
