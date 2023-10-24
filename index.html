@@ -41,52 +41,69 @@
 					var cell2 = newRow.insertCell(1);
 					cell1.className = "file-cell";
 					cell2.className = "file-cell";
-					cell1.style.width = "40%";
-					cell2.style.width = "50%";
+					cell1.style.width = "50%";
+					cell2.style.width = "60%";
 					cell2.style.paddingLeft = "10%";
 					cell1.innerHTML = p.name;
 					cell2.innerHTML = m.name;
-					table.style.width = "85%";
-					document.getElementById("choser").style.textAlign = "center";
+					table.style.width = "92%";
 					document.getElementById("choser").textContent = "Selecting Files";
 					table.style.tableLayout = "fixed";
 					tableCont.appendChild(table);
 					tableCont.appendChild(document.createElement("hr"));
 				} else {
 					alert("please select files for both inputs to continue")
-				}			
+				}
 			}
+			
+			function refresh(){
+				location.reload(); 
+			};
 		</script>
 
 	</head>
 	<body>
 		<p id="ap2zm">AP2zM</p>
-		<div id="apiForm">
-		<h2>Use API</h2>
+			<div style="text-align: right">
+			<button type="button" id="refresh" style="text-align: center" onclick="refresh()">refresh</button>
+			<br><br><br>
+		</div>
+		<div id="apiForm" style="text-align:center">
+		<br><br><br>
+		<h2 class="choice">Use API</h2>
 		<!-- This form allows users to enter API-->
-		<form  onsubmit="fetchPDF(); return false;" method="post" action="api_process.php" class="container">
+		<form  onsubmit="fetchPDF(); return false;" method="post" action="api_form_process.php" class="container">
 			<!-- This input field allows users to enter the API URL, and it is required. -->
-			<input type="text" id="apiURL" placeholder="Enter API URL" required>
+			<div style="display:inline-block; width: 45%" class="urlInputParent">
+			<label style="font-size:120%; color: black;">Documents Url<label><br>
+			<input type="text" class="apiURL" name="documnentUrl" placeholder="Enter Documents API URL" required>
+			</div>
+			<div style="display:inline-block; width: 50%;" class="urlInputParent">
+			<label style="font-size:120%; color: black;">Metadata Url<label><br>
+			<input type="text" class="apiURL" name="metadataUrl" style="margin-left:4%" placeholder="Enter Metadata API URL" required>
+			</div>
+			<br><br><br>
 			<!-- This image input acts as a a button with specific dimensions and a border -->
 			<input type="submit" value="fetch">
-			<br><br><br><br>
+			<br><br><br>
 		</form>
+		<br><br><br><br><br><br><br><br>
 		</div>
+		
 		<!-- upload header 1 tag title -->
-		<h2 id="choser"> Upload files</h2>
+		<h2 id="choser" class="choice"> Upload files</h2>
 		<div style="text-align: center" class="container">
 		<div id="files-list">
-		</div>
+		</div><br>
 		<!-- This form allows users to upload files and will be submitted to "upload.php" -->
-		<form action="upload.php" method="post" enctype="multipart/form-data" style="text-align: center;">
-			<label for="pdfI" id="pdfL"><img src="pdf.jpg" width="8%" alt="upload pdf" style="display: inline;"></label>
-			<input type="file" name="pfdFile" id="pdfI" style="display: none;" multiple>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form action="file_upload.php" method="get" enctype="multipart/form-data" style="text-align: center;">
 
-			<label for="metaI" id="metaL"><img src="meta.jpg" width="8%" alt="upload metadata" style="display: inline;"></label>
-			
-			<input type="file" name="metaFile[]" id="metaI" style="display: none;" multiple>
-			<br>
+			<!--	<label>pdf file</label>-->
+				<label for="pdfI" id="pdfL"><img  src="pdf.png" width="8%" alt="upload pdf"></label>
+				<input type="file" name="pfdFile" id="pdfI" style="display: none;" multiple required>
+				<label for="metaI" id="metaL"><img src="meta.png" width="10%" alt="upload metadata"></label>	
+				<input type="file" name="metaFile[]" id="metaI" style="display: none;" multiple required>
+			<br><br>
 			<button type="button" id="addmore" onclick="addFiles()"><!--<img src="add-files.png" alt="add files">-->Add Files</button>
 			<br><br>
 			<button type="submit">Upload</button>
