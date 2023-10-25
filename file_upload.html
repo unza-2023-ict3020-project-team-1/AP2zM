@@ -10,7 +10,7 @@
 		<div class="container" style="color:black">
 			<h1>GETTING FILES, PLEASE WAIT</h1><br>
 			<?php
-				if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					session_start();
 
 					// The session ID is created and can be accessed via the session_id() function
@@ -31,7 +31,7 @@
 					}
 					$metaNames = [];
 					for($i = 0; $i < count($_FILES['metaFile']['name']); $i++){
-						move_uploaded_file($_FILES['metaFile']['tmp_name'][$i], $metaDir."/".$_FILES['metaFile']['name'][$i];
+						move_uploaded_file($_FILES['metaFile']['tmp_name'][$i], $metaDir."/".$_FILES['metaFile']['name'][$i]);
 						$metaNames[] = $metaDir."/".$_FILES['metaFile']['name'][$i];
 					}
 					echo "<p>CREATING ZIP FILE</p>";
@@ -39,11 +39,12 @@
 					$zipName = $userDir."/ap2zm.zip";
 		
 					if ($zip->open($zipName, ZipArchive::CREATE) === TRUE) {
-						for($i = 0; $i < count($pdfNames); $i++)
-						$zip->addFile($zipName, $pdfNames[$i])
-					    $zip->close();
-					    echo "<p>ZIPPING SUCCESS:</p>";
-					    echo "<a href=\"".$zipName."\" download>Click to Download</a>";
+						for($i = 0; $i < count($pdfNames); $i++){
+							$zip->addFile($zipName, $pdfNames[$i]);
+							$zip->close();
+							echo "<p>ZIPPING SUCCESS:</p>";
+							echo "<a href=\"".$zipName."\" download>Click to Download</a>";
+						}
 					}
 				//add metadata crosswalking code
 				}

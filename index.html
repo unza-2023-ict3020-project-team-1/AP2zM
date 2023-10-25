@@ -46,7 +46,7 @@
 					cell2.style.paddingLeft = "10%";
 					cell1.innerHTML = p.name;
 					cell2.innerHTML = m.name;
-					table.style.width = "92%";
+					table.style.width = "98%";
 					document.getElementById("choser").textContent = "Selecting Files";
 					table.style.tableLayout = "fixed";
 					tableCont.appendChild(table);
@@ -98,7 +98,7 @@
 			<div id="files-list">
 			</div><br>
 			<!-- This form allows users to upload files and will be submitted to "upload.php" -->
-			<form action="file_upload.php" method="post" enctype="multipart/form-data" style="text-align: center;">
+			<form action="file_upload.php" method="POST" enctype="multipart/form-data" style="text-align: center;">
 				<label for="pdfI" id="pdfL"><img  src="pdf.png" width="8%" alt="upload pdf"></label>
 				<input type="file" name="pfdFile" id="pdfI" style="display: none;" multiple required>
 				<label for="metaI" id="metaL"><img src="meta.png" width="10%" alt="upload metadata"></label>	
