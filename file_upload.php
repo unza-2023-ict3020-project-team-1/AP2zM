@@ -1,3 +1,8 @@
+<?php
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		session_start();
+	}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,12 +16,10 @@
 			<h1>GETTING FILES, PLEASE WAIT</h1><br>
 			<?php
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-					session_start();
-
 					// The session ID is created and can be accessed via the session_id() function
 					$userDir = session_id();
 					if(!file_exists($userDir)){
-						mkdir($userDir);
+						mkdir($userDir, 0777, true);
 						$pdfDir = $userDir."/pdfFiles";
 						$metaDir = $userDir."/metaFiles";
 						mkdir($pdfDir, 0777, true);
