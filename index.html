@@ -8,32 +8,24 @@
 		<script>
 		
 			let counter = 0;
-			let metaArr = [];
-			let pdfArr = [];
+			
 			function addFiles (){
-				var pdfI = document.getElementById("pdfI");
-				var metaI = document.getElementById("metaI");
+				var pdfI = document.getElementById("pdfI"+counter);
+				var metaI = document.getElementById("metaI"+counter);
 				var p1 = pdfI.files[0];
 				var m1 = metaI.files[0];
 				
 				if ( pdfI.files.length > 0  && metaI.files.length > 0){
-					pdfArr.push(p1.name);
-					metaArr.push(m1.name);
-					/*if (counter >= 1 && (metaArr[counter] == metaArr[counter - 1] || pdfArr[counter] == pdfaArr[counter - 1])){
-						alert("make sure you are not repeating file inputs");
-						return;
-					}*/
-					
 					document.getElementById("apiForm").style.display = "none";
 					var list = document.getElementById("list");
-					//const pdfI = document.getElementById("pdfI");
-					//const metaI = document.getElementById("metaI");
-					const br = document.createElement("br");	
-					
+					const br = document.createElement("br");
+
 					const pdfIn = pdfI.files;
 					var p = pdfIn[0];
 					const metaIn = metaI.files;
 					var m = metaIn[0];
+
+									
 					const tableCont = document.getElementById("files-list");
 					var table = document.createElement("table");
 					var newRow = table.insertRow(-1);
@@ -51,6 +43,34 @@
 					table.style.tableLayout = "fixed";
 					tableCont.appendChild(table);
 					tableCont.appendChild(document.createElement("hr"));
+
+
+
+					const parent = document.getElementById("inputForm");
+		
+					var pdfOld = document.getElementById("pdfL");
+					pdfOld.setAttribute("for", "pdfI"+(counter + 1)); 
+					pdfOld = document.getElementById("pdfI"+counter);
+					var pdfNew = pdfOld.cloneNode(true);
+					pdfNew.id = "pdfI"+(counter + 1);
+					pdfNew.value = "";
+					parent.insertBefore(pdfNew, pdfOld.nextSibling);
+
+					var metaOld = document.getElementById("metaL");
+					metaOld.setAttribute("for", "metaI"+(counter + 1)); 
+					metaOld = document.getElementById("metaI"+counter);
+					var metaNew = metaOld.cloneNode(true);
+					metaNew.id = "metaI"+(counter + 1);
+					metaNew.value = "";
+
+					/*var pdfTest = document.getElementById("pdfI"+counter);
+					pdfTest.style.display = "none";
+					pdfTest = document.getElementById("metaI"+counter);
+					pdfTest.style.display = "none";*/
+
+					
+					parent.insertBefore(metaNew, metaOld.nextSibling);
+					counter++;
 				} else {
 					alert("please select files for both inputs to continue")
 				}
@@ -103,11 +123,11 @@
 			<div id="files-list">
 			</div><br>
 			<!-- This form allows users to upload files and will be submitted to "upload.php" -->
-			<form action="file_upload.php" method="post" enctype="multipart/form-data" style="text-align: center;">
-				<label for="pdfI" id="pdfL"><img  src="pdf.png" width="8%" alt="upload pdf"></label>
-				<input type="file" name="pfdFile" id="pdfI" style="display: none;" multiple required>
-				<label for="metaI" id="metaL"><img src="meta.png" width="10%" alt="upload metadata"></label>	
-				<input type="file" name="metaFile[]" id="metaI" style="display: none;" multiple required>
+			<form action="file_upload.php" method="post" enctype="multipart/form-data" style="text-align: center;" id="inputForm">
+				<label for="pdfI0" id="pdfL"><img  src="pdf.png" width="8%" alt="upload pdf"></label>
+				<input type="file" name="pdfFile[]" id="pdfI0" style="display: none;" multiple id="pdfArr0" required>
+				<label for="metaI0" id="metaL"><img src="meta.png" width="10%" alt="upload metadata"></label>	
+				<input type="file" name="metaFile[]" id="metaI0" style="display: none;" multiple id="metaArr0" required>
 				<br><br>
 				<button type="button" id="addmore" onclick="addFiles()"><!--<img src="add-files.png" alt="add files">-->Add Files</button>
 				<br><br>

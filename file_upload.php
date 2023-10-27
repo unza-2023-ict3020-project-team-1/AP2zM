@@ -18,13 +18,13 @@
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					// The session ID is created and can be accessed via the session_id() function
 					$userDir = session_id();
-					if(!file_exists($userDir)){
+				//	if(!file_exists($userDir)){
 						mkdir($userDir, 0777, true);
 						$pdfDir = $userDir."/pdfFiles";
 						$metaDir = $userDir."/metaFiles";
 						mkdir($pdfDir, 0777, true);
 						mkdir($metaDir, 0777, true);
-					}
+			//		}
 
 					// Handle file upload
 					$pdfNames = [];
@@ -43,11 +43,11 @@
 		
 					if ($zip->open($zipName, ZipArchive::CREATE) === TRUE) {
 						for($i = 0; $i < count($pdfNames); $i++){
-							$zip->addFile($zipName, $pdfNames[$i]);
-							$zip->close();
-							echo "<p>ZIPPING SUCCESS:</p>";
-							echo "<a href=\"".$zipName."\" download>Click to Download</a>";
+							$zip->addFile($pdfNames[$i], basename($pdfNames[$i]));
 						}
+						echo "<p>ZIPPING SUCCESS:</p>";
+						echo "<a href=\"".$zipName."\" download>Click to Download</a>";
+						$zip->close();
 					}
 				//add metadata crosswalking code
 				}
