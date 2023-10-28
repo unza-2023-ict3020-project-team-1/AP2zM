@@ -62,12 +62,6 @@
 					var metaNew = metaOld.cloneNode(true);
 					metaNew.id = "metaI"+(counter + 1);
 					metaNew.value = "";
-
-					/*var pdfTest = document.getElementById("pdfI"+counter);
-					pdfTest.style.display = "none";
-					pdfTest = document.getElementById("metaI"+counter);
-					pdfTest.style.display = "none";*/
-
 					
 					parent.insertBefore(metaNew, metaOld.nextSibling);
 					counter++;
@@ -125,9 +119,9 @@
 			<!-- This form allows users to upload files and will be submitted to "upload.php" -->
 			<form action="file_upload.php" method="post" enctype="multipart/form-data" style="text-align: center;" id="inputForm">
 				<label for="pdfI0" id="pdfL"><img  src="pdf.png" width="8%" alt="upload pdf"></label>
-				<input type="file" name="pdfFile[]" id="pdfI0" style="display: none;" multiple id="pdfArr0" required>
+				<input type="file" name="pdfFile[]" id="pdfI0" style="display: none;" multiple id="pdfArr0" >
 				<label for="metaI0" id="metaL"><img src="meta.png" width="10%" alt="upload metadata"></label>	
-				<input type="file" name="metaFile[]" id="metaI0" style="display: none;" multiple id="metaArr0" required>
+				<input type="file" name="metaFile[]" id="metaI0" style="display: none;" multiple id="metaArr0" >
 				<br><br>
 				<button type="button" id="addmore" onclick="addFiles()"><!--<img src="add-files.png" alt="add files">-->Add Files</button>
 				<br><br>

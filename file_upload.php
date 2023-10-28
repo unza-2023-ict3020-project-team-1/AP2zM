@@ -17,7 +17,7 @@
 			<?php
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					// The session ID is created and can be accessed via the session_id() function
-					$userDir = session_id();
+					$userDir = "user_data/".session_id();
 				//	if(!file_exists($userDir)){
 						mkdir($userDir, 0777, true);
 						$pdfDir = $userDir."/pdfFiles";
