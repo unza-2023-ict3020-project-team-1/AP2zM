@@ -3,20 +3,20 @@ let counter = 0;
 function addFiles() {
 	var pdfI = document.getElementById("pdfI" + counter);
 	var metaI = document.getElementById("metaI" + counter);
-	var p1 = pdfI.files[0];
-	var m1 = metaI.files[0];
 
 	if (pdfI.files.length > 0 && metaI.files.length > 0) {
-		document.getElementById("apiForm").style.display = "none";
-		var list = document.getElementById("list");
 		const br = document.createElement("br");
-
+		const tableCont = document.getElementById("files-list");
+		if (counter == 0){
+			document.getElementById("listMsg").textContent = "Selected Files";
+			tableCont.appendChild(listMsg);
+			tableCont.appendChild(br);
+		} 
 		const pdfIn = pdfI.files;
 		var p = pdfIn[0];
 		const metaIn = metaI.files;
 		var m = metaIn[0];
 
-		const tableCont = document.getElementById("files-list");
 		var table = document.createElement("table");
 		var newRow = table.insertRow(-1);
 		var cell1 = newRow.insertCell(0);
@@ -29,10 +29,10 @@ function addFiles() {
 		cell1.innerHTML = p.name;
 		cell2.innerHTML = m.name;
 		table.style.width = "92%";
-		document.getElementById("choser").textContent = "Selecting Files";
 		table.style.tableLayout = "fixed";
 		tableCont.appendChild(table);
 		tableCont.appendChild(document.createElement("hr"));
+		
 
 		const parent = document.getElementById("inputForm");
 
@@ -58,6 +58,60 @@ function addFiles() {
 	}
 }
 
-function refresh() {
-	location.reload();
+
+function show_pane(){
+	document.getElementById("left_pane").style.left = "0px";
+		document.getElementById("show_p").style.display = "none";
+		document.getElementById("hide_p").style.display = "block";
+	document.getElementById("main").style.paddingLeft = '265px';
 }
+
+function hide_pane(){
+	document.getElementById("left_pane").style.left = "-250px";
+	document.getElementById("show_p").style.display = "block";
+	document.getElementById("hide_p").style.display = "none";
+	document.getElementById("main").style.paddingLeft = '105px';
+}
+
+
+function use_api(){
+	document.getElementById("default").style.display = "none";
+	document.getElementById("file_sect").style.display = "none";
+	document.getElementById("left_pane").style.left = "-250px";
+	document.getElementById("show_p").style.display = "block";
+	document.getElementById("hide_p").style.display = "none";
+	document.getElementById("api_sect").style.display = 'block';
+	document.getElementById("main").style.paddingLeft = '105px';
+}
+
+function f_upload(){
+	document.getElementById("default").style.display = "none";
+	document.getElementById("api_sect").style.display = "none";
+	document.getElementById("left_pane").style.left = "-250px";
+	document.getElementById("show_p").style.display = "block";
+	document.getElementById("hide_p").style.display = "none";
+	document.getElementById("file_sect").style.display = 'block';
+	document.getElementById("main").style.paddingLeft = '105px';
+}
+
+function usage(){
+	document.getElementById("default").style.display = "block";
+	document.getElementById("api_sect").style.display = "none";
+	document.getElementById("left_pane").style.left = "-250px";
+	document.getElementById("show_p").style.display = "block";
+	document.getElementById("hide_p").style.display = "none";
+	document.getElementById("file_sect").style.display = 'none';
+	document.getElementById("main").style.paddingLeft = '105px';
+}
+
+function dwnld(){
+	document.getElementById("default").style.display = "none";
+	document.getElementById("dwnld_sect").style.display = "block";
+	document.getElementById("api_sect").style.display = "none";
+	document.getElementById("left_pane").style.left = "-250px";
+	document.getElementById("show_p").style.display = "block";
+	document.getElementById("hide_p").style.display = "none";
+	document.getElementById("file_sect").style.display = 'none';
+	document.getElementById("main").style.paddingLeft = '105px';
+}
+

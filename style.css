@@ -5,115 +5,84 @@
 	letter-spacing: -15px;
 	padding: 0px 0px;
 	margin: 0px 0px 5% 0px;
+	background: black;
 }
 
-body {
-	padding: 20px;
+body{
 	margin: 0;
-	background: rgb(0,45,0); /* #291e5d;*/
-	color: lightblue;
 	font-family: Arial, sans-serif;
 }
 
-h1 {
-	font-size: 24px;
-	margin-bottom: 10px;  
+/* SET BACKGROUND FOR BUTTON AND MAIN*/
+#main, .next-btn, #show_p{
+	background: linear-gradient(to right,#D58EBF 30%, cyan 130%);
+}
+#main{
+	min-height: 100vh;
+	min-width: 100vw;
+	font-size: 500px
+	left: 0px;
+	padding-left:265px;
+	padding-top: 4vh;
+	transition: 0.35s;
+	background-size: cover;
+	background-repeat: repeat-y;
+	overflow: scroll;
 }
 
-.container {
-	background: linear-gradient(to right, grey, cyan);
-	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 2px 2px 2px gray;
-	font-size: 150%;
-	font-weight: bold;
-}
-
-
-input[type="text"]{
-	padding: 8px;
-	border-radius: 4px;
-	border: 4px solid lightgray;
-	width: 80%;
-	margin-bottom: 10px;
-}
-
-
-input[type="image"] {
-	display: block;
-	margin: 0 auto;
-}
-.circular-image {
-	border-radius:20%;
-}
-#files-list{
-	color: black;
-	font-size: 100%;
-	text-align: center;
-}
-
-
-#addmore {
-	background-color: gold;
-	color: black;
-	font-size: 120%;
-	font-weight: bold;
-	border: none;
-	padding: 10px 20px;
-	text-align:center;
-	border-radius: 5px;
-	width: 17%;
-	cursor: pointer;
-	text-align:center;
-}
-
-#refresh{
-	font-size: 150%;
-	cursor: pointer;
-	text-align: right;
-	border-radius: 5px;
-	height: 50px;
-}
-
-button[type="submit"], input[type="submit"]{
-	background: rgb(150,255,10);
-	color: black;
-	font-weight: bold;
-	font-size: 100%;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-	width: 13%;
-	text-align:center;
-	cursor: pointer;
-}
-
-.file-cell {
-	white-space: wrap;
-	border: 0;
-	margin: 0 auto;
-	font-size:127%;
-	text-align: left;
+#left_pane{
+	position: fixed;
+	height: 50%;
+	width: 250px;
+	position: fixed;
 	word-wrap: break-word;
-	vertical-align: top; 
+	top: 0px;
+	left: 0px;
+	background-color: #333;
+	color: #fff;
+	padding-top: 95px;
+	transition: 0.3s;
+	overflow-wrap: break-word;
 }
 
-.choice{
-	font-size: 280%;
-	margin: 0px;
+button.choose{
+	color: rgb(240,240,240);
+	background-color: #333;
+	border: none;
+	font-size:60px;
+	width: 250px;
+}
+
+.choice {
+	color: blue;
+	font-size: 70px;
 	text-align: center;
+	margin-top: 50px;
+	text-shadow: 5px 4px black;
 }
 
-.apiURL{
-	border:0px;
-	margin: 0px;
-	padding: 0px;
-	width:100%;
-	height: 30px;
+
+#hide_p{
+	background: #333;
+	color: white;
 }
 
-.urlInputParent{
-	padding: 0px 0px;
-	margin: 0px 0px;
-	border: 0px;
+.pane_btn{
+	position: fixed;
+	left: 5px;
+	top: 10px;
+	width: 80px;
+	height: 73px;
+	font-size: 67px;
+	padding-bottom: 85px;	
+}
+
+.next-btn{
+	color: blue;
+	width: 70%;
+	height: 50px;
+	font-size: 170%;
+	margin: 0 auto;
+	font-weight: bold;
+	border-color: grey;
 }
