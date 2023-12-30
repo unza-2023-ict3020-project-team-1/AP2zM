@@ -1,88 +1,146 @@
+* {
+	font-size: 100%;
+	width: 100%;
+	height: auto;
+	text-overflow: wrap;
+	margin: 0vw;
+	padding: 0vw;
+}
+
 #ap2zm{
 	font-size: 1200%;
 	color: #0492c2;
 	font-weight: bold;
-	letter-spacing: -15px;
+	letter-spacing: -10vw;
 	padding: 0px 0px;
-	margin: 0px 0px 5% 0px;
+	margin: 0vw 0vw 2vw 0vw;
 	background: black;
 }
 
 body{
+	font-size: 2vw;
 	margin: 0;
 	font-family: Arial, sans-serif;
+	width: 100vw;
+	overflow-x: wrap;
 }
 
 /* SET BACKGROUND FOR BUTTON AND MAIN*/
-#main, .next-btn, #show_p{
-	background: linear-gradient(to right,#D58EBF 30%, cyan 130%);
-}
+
 #main{
 	min-height: 100vh;
-	min-width: 100vw;
-	font-size: 500px
-	left: 0px;
-	padding-left:265px;
-	padding-top: 4vh;
+	left: 0%;
+	padding-left:30vw;
+	padding-top: 6vw;
 	transition: 0.35s;
 	background-size: cover;
 	background-repeat: repeat-y;
-	overflow: scroll;
+	overflow-x: wrap;
+	overflow-y: scroll;
+	width: auto;
+	font-size: 200%;
 }
+
+#hide_p{
+	border-color: white;
+}
+
+#show_p{
+	border-color: black;
+}
+
+#main, .next-btn, #show_p{
+	background: linear-gradient(to right,#D58EBF 30%, cyan 130%);
+}
+
+#left_pane, #hide_p, button.choose{
+	background: #333;
+	background: black;
+	color: rgb(240,240,240);
+}
+
 
 #left_pane{
 	position: fixed;
-	height: 50%;
-	width: 250px;
+	height: auto;
+	width: 23vw;
 	position: fixed;
 	word-wrap: break-word;
-	top: 0px;
-	left: 0px;
-	background-color: #333;
-	color: #fff;
-	padding-top: 95px;
+	left: 0vw;
+	padding-top: 17vw;
 	transition: 0.3s;
 	overflow-wrap: break-word;
+	text-align: left;
+	top: 6vw;
 }
 
+
 button.choose{
-	color: rgb(240,240,240);
-	background-color: #333;
 	border: none;
-	font-size:60px;
-	width: 250px;
+	font-size:5vw;
+	width: 100%;
+	word-wrap: break-word;
+	word-wrap: break-word;
+	padding:2.5vw 0vw;
+	margin:0vw;
+	text-align:left;
+	
 }
 
 .choice {
+	font-size: 270%;
 	color: blue;
-	font-size: 70px;
 	text-align: center;
-	margin-top: 50px;
-	text-shadow: 5px 4px black;
-}
-
-
-#hide_p{
-	background: #333;
-	color: white;
+	text-shadow: 0.2vw 0.2vw black;
+	margin-bottom: 5vw;
 }
 
 .pane_btn{
 	position: fixed;
-	left: 5px;
-	top: 10px;
-	width: 80px;
-	height: 73px;
-	font-size: 67px;
-	padding-bottom: 85px;	
+	left: 0.5vw;
+	top: 7.5vw;
+	width: 13vw;
+	border-width: 0.2vw;
+	box-sizing: border-box;
+	padding-left:0vw;
+	padding-right:0vw;
+	padding-top: 0vw;
+	border-radius: 0.8vw;
+}
+
+button.choose, #left_pane{
+	border-radius: 0vw 0.8vw 0.8vw 0vw;
+}
+
+#left_pane hr{
+	width: 22.3vw;
+	border-width: 0.04vw;
+}
+
+.pane-btn-icon{
+	position: relative;
+	font-size: 13vw;
+	top: -3vw;
 }
 
 .next-btn{
 	color: blue;
 	width: 70%;
-	height: 50px;
-	font-size: 170%;
+	height: 6vw;
 	margin: 0 auto;
 	font-weight: bold;
-	border-color: grey;
+	border-color: white;
+}
+
+.apiURL{
+	width: 90%;
+	border-width: 0.3vw;
+	border-color: black;
+}
+
+.apiLabel{
+	font-size:120%;
+	color: black;
+	font-weight: 500;
+	display: block;
 }

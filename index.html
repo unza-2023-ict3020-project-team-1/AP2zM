@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width">
 		<!-- application title-->
 		<title>AP2zM</title>
 		<!--<base href="/ap2zm/">-->
@@ -9,85 +10,58 @@
 	</head>	
 	<body>
 		<div id="left_pane">
-			<button id="hide_p" class="pane_btn" onclick="hide_pane()">☰</button>
-			<br>
-			<hr>
-			<button class="choose" onclick="use_api()">USE API </button>
-			<hr>
-			<button class="choose" onclick="f_upload()">UPLOAD</button>
+			<button id="hide_p" class="pane_btn" onclick="hide_pane()"><span class="pane-btn-icon">☰</span></button><br>
 			<hr>
 			<button class="choose" onclick="usage()">USAGE</button>
 			<hr>
+			<button class="choose" onclick="f_upload()">UPLOAD</button>
+			<hr>
+			<button class="choose" onclick="use_api()">USE API </button>
 		</div>
 		<div id="main">
-			<button id="show_p" class="pane_btn" onclick="show_pane()" style="display: none;">☰</button>
+			<button id="show_p" class="pane_btn" onclick="show_pane()" style="display: none;"><span class="pane-btn-icon">☰</span></button>
 			<div id="default">
 			    <h1 class="choice">USAGE</h1>
-			    <h3>
-			        1.API ENDPOINTS <br><br>
-			        <ul>
-			            <li>
-			                to use API endpoints for the files and their metadata, the app give you a option to use those to fetch(by enterring the urls for document and metadata urls in the spaces provided respectively) and download your zipped files just by clicking download.
-			            </li>
-			        </ul>
-
-			        2.LOCAL FILE BROWSING
-			    </h3>
-			    <p style="font-size:100;">
-			        <ul>
-			           
-			        <li>
-			            If you have your files and their metadata localy available on you lacal machine, you can also use that as the system has a provision for that aswell.
-			             <ol type="i"><li>
-			                scroll down to where you see the pdf icon,, click  there and  browse for the files you would want to zip 
-			             </li><br>
-			            
-			            <li>
-			                for the metadata you can click on the icon on the right side of the pdf icon and you will be provided with an option to browse for the metadata files you want to convert to csv and  zip.
-			            </li><br>
-			            <li>if one wishes to enter as many files as possible, the app has a provission for that aswell where one can just click on the add more files button.</li>    
-			        
-			        </ol>  
-			        </li>
-			        </ul>
-			    </p>
+			    <h3>1. USING APIs</h3>
+				To use API endpoints for the files and their metadata, the app give you a option to use those to fetch(by enterring the urls for document and metadata urls in the respective fields) and download your zipped files by clicking download.
+				<br><br>
+				
+			    <h3>2. UPLOADING FILES</h3>
+				<p>there are two icons, the left one with a PDF symbol is for documents and the other one is for the corresponding metadata.</p><br>
+				i. Click on the document icon to select a file to upload from the local storage, make sure to also select the correspoding metadata
+				<br><br>
+				ii. To add more files, click the addmore button after selecting files.
+				<br><br>
+				iii. after selection of files is done, click uoload, the system will zip the documents, map the metadata to CSV format, and then put the CSV fomarted metadata into one CSV file, after which the user can download the ZIP and CSV files.
 			</div>
 			<div id="api_sect" class="sect" style="display:none;">
 				<br>
-				<h2 class="choice">USE API</h2>
+				<h1 class="choice">USE API</h1>
 				<!-- This form allows users to enter API-->
-				<form  onsubmit="fetchPDF(); return false;" method="post" action="api_form_process.php">
-					<!-- This input field allows users to enter the API URL, and it is required. -->
-					<div style="display:inline-block; width: 45%" class="urlInputParent">
-						<label style="font-size:120%; color: black;">Documents Url<label><br>
-						<input type="text" class="apiURL" name="documnentUrl" placeholder="Enter Documents API URL" required>
-					</div>
-					<div style="display:inline-block; width: 50%;" class="urlInputParent">
-						<label style="font-size:120%; color: black;">Metadata Url<label><br>
-						<input type="text" class="apiURL" name="metadataUrl" style="margin-left:4%" placeholder="Enter Metadata API URL" required>
-					</div>
-					<br><br>
-					<!-- This image input acts as a a button with specific dimensions and a border -->
-					<input type="submit" class="next-btn" value="fetch">
-					<br><br><br>
+				<form onsubmit="fetchPDF(); return false;" method="post" action="api_form_process.php">
+					<label for="docURL" class="apiLabel">Documents Url</label>
+					<input type="text" id="docURL" name="docURL" class="apiURL" placeholder="Enter valid Documents API URL" required><br><br>
+					<label for="metaURL" class="apiLabel" >Metadata Url</label>
+					<input type="text" id="metaURL" name="metaURL" class="apiURL" placeholder="Enter valid Metadata API URL" required><br><br><br>
+					<input type="submit" class="next-btn" value="fetch"><br><br><br>
 				</form>
 			</div>
 			
 			<!-- upload header 1 tag title -->
 			<div id="file_sect" class="sect" style="display:none;">
-				<h2 class="choice">UPLOAD FILES</h2>
+				<h1 class="choice">UPLOAD FILES</h1>
 				<!-- div to create listing table using javascript-->
-				<div id="files-list" style="font-size:200%">
-					<h2 id="listMsg" style="width: 100%"> No Files Selected</h2>
+				<div id="files-list">
+					<h1 id="listMsg" style="font-size: 200%;"> No Files Selected</h1>
 				</div><br>
 				<!-- This form allows users to upload files and will be submitted to "upload.php" -->
-				<form action="file_upload.php" method="post" enctype="multipart/form-data" id="inputForm">
-					<label for="pdfI0" id="pdfL"><img  src="pdf.png" width="20%" alt="upload pdf"></label>
+				<form action="file_upload.php" method="post" id="fileInputForm" enctype="multipart/form-data">
+					<label for="pdfI0" id="pdfL"><img  src="pdf.png" style="width:20%;" alt="upload pdf"></label>
 					<input type="file" name="pdfFile[]" id="pdfI0" style="display: none;" multiple>
-					<label for="metaI0" id="metaL" style="padding-left: 28%"><img src="meta.png" width="25%" alt="upload metadata"></label>	
+					<label for="metaI0" id="metaL" style="padding-left: 28%"><img src="meta.png" style="width:24%;" alt="upload metadata"></label>
 					<input type="file" name="metaFile[]" id="metaI0" style="display: none;" multiple>
-					<p style="font-size: 160%; justify-content: center; padding-left:25px; font-weight: bold; margin-top: -5px;">select pdf<span style="padding-left: 36%;">select metadata</span></p>
-					<br><br><br><br>
+					<p style="margin-top: -1.3vw;"><span style="display: inline-block; text-align: center; width: 20%;  font-weight: 500;">document</span><span style="padding-left: 28.8%; text-align: center; display: inline-block; width: 25%; font-weight: 500;">metadata</span></p>
+					<br><br>
 					<button type="button" id="addmore" class="next-btn" onclick="addFiles()">Add Files</button>
 					<br><br><br>
 					<button type="submit" class="next-btn">Upload</button>
@@ -95,5 +69,8 @@
 				</form>
 			</div>
 		</div>
+		<script>
+			squareIt(".pane_btn");
+		</script>
 	</body>
 </html>
